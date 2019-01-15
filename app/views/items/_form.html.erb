@@ -31,8 +31,12 @@
       <%= form.label :images %>
       <%= form.file_field :images ,multiple: true , direct_upload: true ,class: "file_input" %>
     </div>
+    <% if item.images.attached? %>
+      <% item.images.each do |image| %>
+        <%= image_tag image.variant(resize: "150x150") %>
+      <% end %>
+    <% end %>
   </div>
-
 
   <div class="actions">
     <%= form.submit %>
