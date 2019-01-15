@@ -55,11 +55,13 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :price, :description)
+    params.require(:item).permit(:name, :description)
   end
+
   def uploaded_images
     params[:item][:images].map{|id| ActiveStorage::Blob.find(id)} if params[:item][:images]
   end
+
   def create_blob(uploading_file)
     ActiveStorage::Blob.create_after_upload! \
       io: uploading_file.open,

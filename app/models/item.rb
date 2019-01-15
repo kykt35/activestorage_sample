@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
   has_many_attached :images
-  validates :name, :price, :description ,presence: true
+  validates :name, :description ,presence: true
 end
