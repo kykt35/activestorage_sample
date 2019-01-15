@@ -1,3 +1,26 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin clearfix() {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+.clearfix {
+  @include clearfix;
+}
+
+.image-box {
+  float: left;
+  width: 150px;
+  margin: 0 10px 0 0;
+  p {
+    margin: 0;
+  }
+  .btn-edit {
+    float: left;
+  }
+  .btn-delete {
+    float: right;
+  }
+}
+
