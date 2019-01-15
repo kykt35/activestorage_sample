@@ -26,10 +26,13 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images ,multiple: true%>
+  <div class="images_field">
+    <div  class="field">
+      <%= form.label :images %>
+      <%= form.file_field :images ,multiple: true , direct_upload: true ,class: "file_input" %>
+    </div>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>
