@@ -26,19 +26,24 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="images_field">
+  <div class="images_field clearfix">
     <div  class="field">
       <%= form.label :images %>
-      <%= form.file_field :images ,multiple: true , direct_upload: true ,class: "file_input" %>
+      <%= form.file_field :images ,multiple: true ,class: "file_input" %>
     </div>
     <% if item.images.attached? %>
       <% item.images.each do |image| %>
-        <%= image_tag image.variant(resize: "150x150") %>
+        <div class="image-box">
+          <%= image_tag image.variant(resize: "150x150") %>
+          <p> <%= image.filename %> </p>
+          <%= link_to "Edit", "", class: "btn-edit" %>
+          <%= link_to "Delete", "", class: "btn-delete" %>
+        </div>
       <% end %>
     <% end %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save"%>
   </div>
 <% end %>
