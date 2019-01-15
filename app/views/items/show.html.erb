@@ -18,12 +18,16 @@
 <p>
   <strong>images:</strong>
 </p>
-<% if @item.images.attached? %>
-  <% @item.images.each do |image|%>
-    <%= image_tag image.variant(resize: "150x150") %>
+<div class= "clearfix">
+  <% if @item.images.attached? %>
+    <% @item.images.each do |image|%>
+      <div class="image-box">
+        <%= image_tag image.variant(resize: "150x150") %>
+        <p> <%= image.filename %> </p>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-
+</div>
 <div>
   <%= link_to 'Edit', edit_item_path(@item) %> |
   <%= link_to 'Back', items_path %>
