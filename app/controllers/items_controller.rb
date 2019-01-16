@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all.with_attached_images
+    @items = Item.all
   end
 
   def show
@@ -17,7 +17,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    uploaded_images.each {|image| @item.images.attach(image)} if uploaded_images.present?
     if @item.save
       redirect_to @item, notice: 'Item was successfully created.'
     else
@@ -26,8 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.images.detach
-    uploaded_images.each {|image| @item.images.attach(image)} if uploaded_images.present?
+    @item.images.detach #一旦、すべてのimageの紐つけを解除
     if @item.update(item_params)
       redirect_to @item, notice: 'Item was successfully updated.'
     else
@@ -55,7 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description)
+    params.require(:item).permit(:name, :description).merge(images: uploaded_images)
   end
 
   def uploaded_images
