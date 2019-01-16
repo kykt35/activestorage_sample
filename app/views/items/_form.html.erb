@@ -21,10 +21,10 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="images_field clearfix">
+  <div class="images-field clearfix">
     <div  class="field">
       <%= form.label :images %>
-      <%= form.file_field :images, class: "file_input" %>
+      <%= form.file_field :images, multiple: true, class: "file-input" %>
     </div>
     <% if item.images.attached? %>
       <% item.images.each do |image| %>
