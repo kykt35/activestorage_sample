@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
   def upload_image
       @image_blob = create_blob(params[:image])
       respond_to do |format|
-        format.json { @image_blob.id }
+        format.json { @image_blob }
       end
   end
 
